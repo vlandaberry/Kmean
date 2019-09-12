@@ -1,4 +1,4 @@
-##-----Kmean algorithm-----##
+##-----Kmean algorithm  unique variable-----##
 
 
 #libraries
@@ -31,14 +31,11 @@ data_ov <- data$data
 
 ##The prior steps for defining the algorithm are:
 
-# select the k initial centers 
-# for the k initial centers
-k<-2
-centers <- sample(data$data,2)
-x<- as.data.frame(data$data)
+
+x<- as.data.frame(data_ov)
 
 ## we try with the kmeans command in R
-trial<-kmeans(x,2, iter.max=10)
+trial<-kmeans(x,2, iter.max=19900)
 data$cluster_ral<-trial$cluster
 
 c <-ggplot(data, aes(x =data, fill=factor(cluster_ral)))
@@ -120,8 +117,6 @@ data$finalcluster<-results$clusters
 
 d <-ggplot(data, aes(x =data, fill=factor(finalcluster)))
 d + geom_dotplot() +scale_y_continuous(NULL, breaks = NULL)+labs(x="")+theme_minimal()+ scale_fill_discrete(name = "Grupo", labels=c("1", "2"))
-
-
 
 
 
