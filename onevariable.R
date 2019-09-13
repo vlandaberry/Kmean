@@ -2,7 +2,9 @@
 
 
 #load library
+library(dplyr)
 library(ggplot2)
+
 
 #1- For programming propouse I create two samples of a normal random variable, the first one called N1 is a random sample 
 #for a normal random variable with mean=0 and variance=1, the second one called N2 is a random sample for a normal random variable
@@ -79,7 +81,7 @@ kmeans_one<-function(k,x, it=10){
     for (n in seq1){
       for (j in 1:nrow(distance)){
         cluster[j,1]<- which.min(abs(distance[j,]))
-       }
+      }
     }
     
     withind_temp <-colSums(distance^2)
@@ -98,10 +100,8 @@ kmeans_one<-function(k,x, it=10){
     }
     
   }
-  labels<-as.character(1:k)
-  d <-ggplot(x, aes(x =x[,1], fill=factor(finalcluster)))
-  d<-d + geom_dotplot() +scale_y_continuous(NULL, breaks = NULL)+labs(x="")+theme_minimal()+ scale_fill_discrete(name = "Grupo", labels=labels)
-  results<<-list(centers=finalcenters, clusters=finalcluster, k=k, max.it=it, z=z, data=x, plot=d)
+
+  results<<-list(centers=finalcenters, clusters=finalcluster, k=k, max.it=it, z=z, data=x)
   
 }
 
