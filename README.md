@@ -38,14 +38,14 @@ set.seed(12)
 	
 	N2 <- rnorm(100,mean=4, sd=0.5)
 	
-  data<-as.data.frame(c(N1,N2))
+  	data<-as.data.frame(c(N1,N2))
   
 
-For two cluster k=2 and it=100
+	For two cluster k=2 and it=100
 
-kmeans_one(2,data,it=100)
+	kmeans_one(2,data,it=100)
 
-In the environment you get a results list witrh the following information:
+In the environment you get a results list with the following information:
 
 List of 6:
  * centers : num [1:2] 0.834 1.145 
