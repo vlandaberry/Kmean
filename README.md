@@ -60,13 +60,16 @@ List of 6:
 
 
 
-### Morethanone.R example
+### Morethanone.R output
 
 If you have more than one variable in your data frame and you want to aplly kmeans you can use the function kmeansgeneral(k,x, it, scale). The arguments of this function are:
 - k= number of clusters 
 - x= data frame or vector with the variable data
 - it= number of iterations (default it=10)
--scale (default value is FALSE). If the data is not scaled then default should remain as FALSE and the algorithm also 
+-scale (default value is FALSE). If the data is not scaled then default should remain as FALSE and the algorithm also will scale the data. 
 
+Results are the same as in the case with one variable. 
+
+### Morethanone.R output
 
 
