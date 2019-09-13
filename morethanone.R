@@ -36,12 +36,14 @@ x<-data
 k=2
 it=1
 scale=FALSE
-##--- Function for only one variable---
 
-kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
+##--run the function for more than one variable--##
+
+
+kmeansgeneral<-function(k,x, it=1, scale=FALSE){
   if(class(k)!="numeric"){
     print("number of clusters must be numeric")
-    } 
+  } 
   if(class(x)=="matrix"){
     x<-as.data.frame(x)
   }
@@ -49,7 +51,7 @@ kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
     print("x must be a matrix or a data.frame")
   }
   if (scale==FALSE){
-   x <- scale(x) 
+    x <- scale(x) 
   }
   seq_it<-1:it
   z <- 0
@@ -58,19 +60,20 @@ kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
   centers<- matrix(NA,nrow=k,ncol =ncol(x))
   distance <- matrix(0, nrow=nrow(x), ncol=ncol(x))
   d=ncol(x)+1
-  distance_cluster<- matrix(0, nrow=nrow(x), ncol=d)
+  distance_cluster<- matrix(0, nrow=nrow(x), ncol=k)
   cluster <- matrix(0, nrow=nrow(x), ncol=1)
   mincriterio<-NA
   mincriterio_temp <-rep(NA,k) 
   while(z<it){
     z=z+1
     centers[,1] <-sample(x[,1], size=k)
-
+    
     for (n in 1:k){
-     centers[n,] <-as.matrix(x[(which((x[,1])==centers[n,1])),])
+      centers[n,] <-as.matrix(x[(which((x[,1])==centers[n,1])),])
       centers_temp <-t(as.matrix(centers[n,]))
       centers_temp <-rep(1,(nrow(distance))) %x% centers_temp
       distance<- (x-centers_temp)^2
+      distance <- as.data.frame(distance)
       distance_cluster[,n]<-rowSums(distance)
     }
     for (j in 1:nrow(distance_cluster)){
@@ -79,11 +82,11 @@ kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
     }
     
     for (i in 1:k) {
-    distance_cluster_temp <- as.data.frame(distance_cluster)
-    temp<-filter(distance_cluster_temp, distance_cluster_temp[,d]==i)
-    temp <- temp[,-d]
-    temp<-sum(colSums(temp))
-    mincriterio_temp[i] <- temp
+      distance_cluster_temp <- as.data.frame(distance_cluster)
+      temp<-filter(distance_cluster_temp, distance_cluster_temp[,d]==i)
+      temp <- temp[,-d]
+      temp<-sum(colSums(temp))
+      mincriterio_temp[i] <- temp
     }
     mincriterio_temp <- sum(mincriterio_temp)
     if(mincriterio_temp<=mincriterio|is.na(mincriterio)==TRUE){
@@ -97,8 +100,8 @@ kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
       finalcenters<-finalcenters
     }}
   results<<-list(centers=finalcenters, clusters=finalcluster, k=k, max.it=it, z=z, data=x)
-  }
-  
+}
+
 
 kmeansgeneral(2,x,it=1000,scale=FALSE)
 
