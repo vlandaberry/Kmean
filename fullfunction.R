@@ -1,6 +1,12 @@
-####------------------------Full algorithm-----------------###
+#############################################################
+###------------------------Full algorithm-----------------###
+#############################################################
 
-##--- Function for only one variable---
+library(dplyr)
+library(ggplot2)
+
+##-- Function for only one variable---##
+#-Run the function for one variable
 
 kmeans_one<-function(k,x, it=10){
   
@@ -54,20 +60,18 @@ kmeans_one<-function(k,x, it=10){
     }
     
   }
-  labels<-as.character(1:k)
-  d <-ggplot(x, aes(x =x[,1], fill=factor(finalcluster)))
-  d<-d + geom_dotplot() +scale_y_continuous(NULL, breaks = NULL)+labs(x="")+theme_minimal()+ scale_fill_discrete(name = "Grupo", labels=labels)
-  results<<-list(centers=finalcenters, clusters=finalcluster, k=k, max.it=it, z=z, data=x, plot=d)
+
+  results<<-list(centers=finalcenters, clusters=finalcluster, k=k, max.it=it, z=z, data=x)
   
 }
 
 
 
 
-##run the function for more than one variable##
+##--run the function for more than one variable--##
 
 
-kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
+kmeansgeneral<-function(k,x, it=1, scale=FALSE){
   if(class(k)!="numeric"){
     print("number of clusters must be numeric")
   } 
@@ -87,7 +91,7 @@ kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
   centers<- matrix(NA,nrow=k,ncol =ncol(x))
   distance <- matrix(0, nrow=nrow(x), ncol=ncol(x))
   d=ncol(x)+1
-  distance_cluster<- matrix(0, nrow=nrow(x), ncol=d)
+  distance_cluster<- matrix(0, nrow=nrow(x), ncol=k)
   cluster <- matrix(0, nrow=nrow(x), ncol=1)
   mincriterio<-NA
   mincriterio_temp <-rep(NA,k) 
@@ -100,6 +104,7 @@ kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
       centers_temp <-t(as.matrix(centers[n,]))
       centers_temp <-rep(1,(nrow(distance))) %x% centers_temp
       distance<- (x-centers_temp)^2
+      distance <- as.data.frame(distance)
       distance_cluster[,n]<-rowSums(distance)
     }
     for (j in 1:nrow(distance_cluster)){
@@ -131,15 +136,32 @@ kmeansgeneral<-function(k,x, it=1, scale=c(FALSE, TRUE)){
 
 ## All combination functions
 #ver como dejar seteado por defecto scale FALSE
-alt_kmean<-function(k,x,it=10, scale=c(FALSE, TRUE)){
-if (ncol(x)==1){
-  scale=TRUE
-  kmeans_one(k,x,it)}else{
-    kmeansgeneral(k,x,it,scale)
-  }}
+alt_kmean<-function(k,x,it=10, scale=FALSE){
+  
+  if((class(x)!="data.frame")){
+    x=as.data.frame(x)
+  }
+  if(k>nrow(x)){
+    print("more centers than observations NOT VALID!")
+  }
+  
+  if ((ncol(x))>1){
+    kmeansgeneral(k,x,it=10,scale=FALSE)}else{
+     scale=TRUE
+     kmeans_one(k,x,it)
+    }}
 
 
+##test with two examples 
 
+x_one<-rnorm(100)
 
-alt_kmean(2,x,it=20)
-alt_kmean(2,z,it=30,scale=FALSE)
+set.seed(12)
+N1 <- rnorm(100,mean=0, sd=1)
+N2 <- rnorm(100,mean=4, sd=0.5)
+data<-as.data.frame(cbind(N1,N2))
+
+alt_kmean(k=3,x_one,it=20)
+results
+
+alt_kmean(4,data,it=30,scale=FALSE)
