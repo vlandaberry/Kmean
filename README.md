@@ -41,22 +41,22 @@ kmeans_one(2,data,it=100)
 
 In the environment you get a results list witrh the following information:
 
-List of 6
- $ centers : num [1:2] 0.834 1.145 
- $ clusters: num [1:200, 1] 1 2 1 1 1 1 1 1 1 1 ...
- $ k       : num 2
- $ max.it  : num 100
- $ z       : num 100
- $ data    :'data.frame':	200 obs. of  1 variable:
-  ..$ c(N1, N2): num [1:200] -1.481 1.577 -0.957 -0.92 -1.998 ...
+List of 6:
+ - centers : num [1:2] 0.834 1.145 
+ - clusters: num [1:200, 1] 1 2 1 1 1 1 1 1 1 1 ...
+ - k       : num 2
+ - max.it  : num 100
+ - z       : num 100
+ - data    :'data.frame':	200 obs. of  1 variable:
+ - c(N1, N2): num [1:200] -1.481 1.577 -0.957 -0.92 -1.998 ...
 
-*results$centers:* a vector containing the value of the centers of each cluster. In this examples 1 cluster has a center in 0.834 and the other in 1.145.
+- *results$centers:* a vector containing the value of the centers of each cluster. In this examples 1 cluster has a center in 0.834 and the other in 1.145.
 
-*results$clusters*: a vector with labels for each observation indicating the cluster assigned to that observation. 
-*results$k*: number of clusters
-*results$max.it*: number of iterations defined
-*results$z*: number of iterations actually realized. It should always coincide. Is a control resutl
-*results$data*: original data
+- *results$clusters*: a vector with labels for each observation indicating the cluster assigned to that observation. 
+- *results$k*: number of clusters
+- *results$max.it*: number of iterations defined
+- *results$z*: number of iterations actually realized. It should always coincide. Is a control resutl
+- *results$data*: original data
 
 
 
