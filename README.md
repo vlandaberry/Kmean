@@ -6,7 +6,7 @@ Whit this function you can calculate the centers and obtain the data clasifficat
 
 - some codes on K-means using the R function kmean.
 
-- real data analysis using k-mean algortihm.
+- real data analysis using k-means algortihm.
 
 
 ## K-mean function programmed in R
