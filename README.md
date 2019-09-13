@@ -31,12 +31,18 @@ kmeans_one(k,x,it) arguments are:
 In the code we generate two samples of two different random variables, and then combine them in one vector. We want to see if the base algorithm provided by r (kmeans) and our algorithm (kmeans_one) can classify the observations according to the random variable that generates the observation. 
 
 *Example*
+
 set.seed(12)
+
 	N1 <- rnorm(100,mean=0, sd=1) 
+	
 	N2 <- rnorm(100,mean=4, sd=0.5)
+	
   data<-as.data.frame(c(N1,N2))
+  
 
 For two cluster k=2 and it=100
+
 kmeans_one(2,data,it=100)
 
 In the environment you get a results list witrh the following information:
