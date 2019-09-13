@@ -15,7 +15,7 @@ Whit this function you can calculate the centers and obtain the data clasifficat
 - The morethanone.R code has the code to apply  K-means with more than one variable
 - The fullfunction.R has the code of k-mean algortihm for all cases
 
-- The HowIdidit.Rmd is a file containing  a step by step explanation about what I did in each code and the elements I define.
+
 
 
 
@@ -76,6 +76,13 @@ If you have more than one variable in your data frame and you want to aplly kmea
 
 Results are the same as in the case with one variable. 
 
-### Morethanone.R output
+### fullfunction.R 
+ You can apply the function in this code for any case. It will work if you have only one variable or more than one. 
+ The function is altkmeans(k,x,it,scale) and the arguments  of this function are:
+- k= number of clusters 
+- x= data frame or vector with the variable data
+- it= number of iterations (default it=10)
+-scale (default value is FALSE). If the data is not scaled then default should remain as FALSE and the algorithm also will scale the data. 
+
 
 
