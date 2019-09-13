@@ -3,6 +3,7 @@
 
 #load library
 library(ggplot2)
+library(dplyr)
 
 #1- For programming propouse I create two samples of a normal random variable, the first one called N1 is a random sample 
 #for a normal random variable with mean=0 and variance=1, the second one called N2 is a random sample for a normal random variable
@@ -40,6 +41,8 @@ scale=FALSE
 ##--run the function for more than one variable--##
 
 
+
+
 kmeansgeneral<-function(k,x, it=1, scale=FALSE){
   if(class(k)!="numeric"){
     print("number of clusters must be numeric")
@@ -60,7 +63,10 @@ kmeansgeneral<-function(k,x, it=1, scale=FALSE){
   centers<- matrix(NA,nrow=k,ncol =ncol(x))
   distance <- matrix(0, nrow=nrow(x), ncol=ncol(x))
   d=ncol(x)+1
-  distance_cluster<- matrix(0, nrow=nrow(x), ncol=k)
+  if (k>ncol(x)){
+  distance_cluster<- matrix(0, nrow=nrow(x), ncol=k)}else{
+  distance_cluster<- matrix(0, nrow=nrow(x), ncol=d)
+  }
   cluster <- matrix(0, nrow=nrow(x), ncol=1)
   mincriterio<-NA
   mincriterio_temp <-rep(NA,k) 
@@ -78,8 +84,9 @@ kmeansgeneral<-function(k,x, it=1, scale=FALSE){
     }
     for (j in 1:nrow(distance_cluster)){
       cluster[j,1]<- which.min(abs(distance_cluster[j,1:ncol(x)]))
-      distance_cluster[,d] <-cluster
-    }
+      if (k>ncol(x)){
+      distance_cluster[,k] <-cluster
+    }else{ distance_cluster[,d] <-cluster}}
     
     for (i in 1:k) {
       distance_cluster_temp <- as.data.frame(distance_cluster)
@@ -101,6 +108,7 @@ kmeansgeneral<-function(k,x, it=1, scale=FALSE){
     }}
   results<<-list(centers=finalcenters, clusters=finalcluster, k=k, max.it=it, z=z, data=x)
 }
+
 
 
 kmeansgeneral(2,x,it=1000,scale=FALSE)
