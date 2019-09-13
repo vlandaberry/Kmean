@@ -43,7 +43,7 @@ scale=FALSE
 
 
 
-kmeansgeneral<-function(k,x, it=1, scale=FALSE){
+kmeansgeneral<-function(k,x, it=10, scale=FALSE){
   if(class(k)!="numeric"){
     print("number of clusters must be numeric")
   } 
