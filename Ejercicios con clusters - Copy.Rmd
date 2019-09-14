@@ -29,7 +29,7 @@ D<-dist(mydata,method="euclidean")
 
 ```
 
-D is a *"dist"* class element. It´s hard to use it directly. So , in the next step we transform it and  create a matrix that we call DD with 8 rows and 8 columns (equal to the total data points that we have). Then we complete the empty matrix with the values of the distance using the reshape function.
+D is a *"dist"* class element. ItÂ´s hard to use it directly. So , in the next step we transform it and  create a matrix that we call DD with 8 rows and 8 columns (equal to the total data points that we have). Then we complete the empty matrix with the values of the distance using the reshape function.
 
 
 
