@@ -82,7 +82,7 @@ Results are the same as in the case with one variable.
 - k= number of clusters 
 - x= data frame or vector with the variable data
 - it= number of iterations (default it=10)
--scale (default value is FALSE). If the data is not scaled then default should remain as FALSE and the algorithm also will scale the data. 
+- scale (default value is FALSE). If the data is not scaled then default should remain as FALSE and the algorithm also will scale the data. 
 
 
 
