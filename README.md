@@ -2,7 +2,7 @@
 
 This repository contains a kmean function programmed in R:
 
-Whit this function you can calculate the centers and obtain the data clasiffication in clusters using k-means method. 
+With this function you can calculate the centers and obtain the data classification in clusters using k-means method. 
 
 - some codes on K-means using the R function kmean based on the book  "Practical Guide To Cluster Analysis in R, Unsupervised Machine Learning",  author:Alboukadel Kassambara  
 
