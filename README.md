@@ -1,17 +1,17 @@
-# K-mean
+# Kmeans
 
 This repository contains a kmean function programmed in R:
 
 With this function you can calculate the centers and obtain the data classification in clusters using k-means method. 
 
-- Codes on K-means using the R function kmean based on the book  "Practical Guide To Cluster Analysis in R, Unsupervised Machine Learning",  author:Alboukadel Kassambara. The file with the code is **Tutorial.R**
+- Codes on K-means using the R function kmeans based on the book  "Practical Guide To Cluster Analysis in R, Unsupervised Machine Learning",  author:Alboukadel Kassambara. The file with the code is **Tutorial.R** and the md file is **Tutorial.md**
 
 -Exercises solutions in the Excercises folder. 
 
 - Real data analysis using k-means algortihm.
 
 
-## K-mean function programmed in R
+## Kmeans function programmed in R
 
 - The onevariable.R code has the code to apply K-mean over 1 variable. 
 - The morethanone.R code has the code to apply  K-means with more than one variable
