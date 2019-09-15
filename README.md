@@ -6,7 +6,7 @@ With this function you can calculate the centers and obtain the data classificat
 
 - some codes on K-means using the R function kmean based on the book  "Practical Guide To Cluster Analysis in R, Unsupervised Machine Learning",  author:Alboukadel Kassambara. The file with the code is KmeanTutorial.R
 
--some exercises solutions in the file Cluster Kmean examples
+-some exercises solutions in the Excercises folder. 
 
 - real data analysis using k-means algortihm.
 
